@@ -9,4 +9,4 @@ I will be using the NYC AirBnB data collected by Tom Slee (which can be found he
 
 To solve this problem, I plan on using linear regression or another supervised machine learning algorithm with an emphasis on generalization of the data so it can be used to predict prices of listings. A user will be able to fill in room details and the tool will return a “fair” price range for the listing based on the model. 
 
-All code will be publicly listed on github in a jupyter notebook. The project will be presented at office hours, or an uploaded recorded presentation will be posted when complete.
+All code will be publicly listed on github in a jupyter notebook. The project will be presented at [claireramming.github.io](http://claireramming.github.io) when complete.

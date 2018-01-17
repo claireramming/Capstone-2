@@ -26,14 +26,20 @@ I broke my data out into a 30% testing and 70% training set, fit the training da
 
 I decided to switch to an ElasticNet model. This would potentially cut out some less important features, and smooth the coefficient variance so the model could generalize better. Scaling and fitting the data to this model led to coefficients between 16.5 and -19.6, which are much more reasonable. What I hoped to see if I plotted the predictions vs the actual prices was a mostly linear 1:1 plot that would somewhat flatten out as the prices got higher (most likely some of the higher priced listings are over-priced so my model should predict lower prices than the actual listing). This is essentially what I saw for the ElasticNet model, it also did not predict any negative room prices, or predict any listings to be over $350. 
 
-![elasticnet](elasticnet_out)
+![elasticnet](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/Elasticnet_out.png)
 
 I also used R<sup>2</sup> as a metric for how well my model was doing. My ElasticNet model was a .57 (in comparison, my original linear regression model had an  R<sup>2</sup> value of -3.8x10<sup>18</sup>). 
 
 To see if I could get similar results with a model that wouldn't require me to drop any of the original data, I tried a random forest regression model. This ultimately led to higher predicted prices and an R<sup>2</sup> of .22
 
-![randomforest](randomforest_out)
+![randomforest](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/randomforest_out.png)
 
 If I remove the same data that I removed for ElasticNet, I increase my R<sup>2</sup> to .58 but the predictions still tend to skew higher than the actual prices although in the upper price ranges (>$300) it skewed lower and only predicted a few listings to be over $400. 
 
-![random forest 2](randomforst_lessdata)
+![random forest 2](rhttps://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/randomforest_lessdata.png)
+
+Once I had my final model (my ElasticNet model), I turned the process of scaling and transforming the features into a pipeline, and saved off the pipeline fitted to my training data to a file (a pickle file using the dill package). I then built a function to return a suggested price given details of a listing. From the perspective of a renter, or someone just putting up a listing, they should have all the feature info available except for `overall_satisfaction` and `ratings`. To make sure this was taken into account, my function randomly creates an overall satisfaction between 3 and 5, and a number of ratings between 1 and the max number of ratings in the dataset, which is 454. This is done 10 times, the random features are put in an array that contains the remaining given features, and the array is scaled and run through the model. The predictions are then averaged, and the average prediction is what is given to the user. 
+
+I created a simple prototype web app with flask and wtform that takes in all of the required inputs and returns a message with the suggested price (via my prediction function and model). All code and required files to locally host it are on my github. 
+
+![webapp](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/webapp_example.png)

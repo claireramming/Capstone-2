@@ -6,11 +6,11 @@ I found a dataset pulled by Tom Slee that contains the basic AirBnB listing data
 
 One of my first tasks with the data was to make sure the prices did not change dramatically throughout the year. I did a bootstrap test between the July 2017 data and the Feb 2017 data to see if there was a practical and/or statistical difference between the prices for the two months. Visualizing the data, there was a slight difference but the statistical significance was low (p value of ~.11) and the actual difference in mean price was only $2.00, so practically there’s very little difference in price. With that insight I did not think it is necessary to add more data beyond the July 2017 dataset. 
 
-![july-feb price compare](bootstrap_prices)
+![july-feb price compare](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/bootstrap_year.png)
 
 Once that was settled, I did some basic data exploration to see any obvious correlations. I found that to get any meaningful insights I had to cut out all listings that were priced at over $500.
 
-![borough prices](borough_prices)
+![borough prices](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/borough_prices.png)
 
 The category `room_type` contained wether the listing was for a room in a house, apartment, condo, etc.. This seems to be a free-text field, while most locations fell under apartment/house/condo there are some options like 'casa particular' and 'castle'. There was also already another option of 'other.' I changed all listings that did not have around or over 100 entries into 'other' to cut down on the number of categories.
 
@@ -36,10 +36,10 @@ To see if I could get similar results with a model that wouldn't require me to d
 
 If I remove the same data that I removed for ElasticNet, I increase my R<sup>2</sup> to .58 but the predictions still tend to skew higher than the actual prices although in the upper price ranges (>$300) it skewed lower and only predicted a few listings to be over $400. 
 
-![random forest 2](rhttps://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/randomforest_lessdata.png)
+![random forest 2](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/randomforest_lessdata.png)
 
 Once I had my final model (my ElasticNet model), I turned the process of scaling and transforming the features into a pipeline, and saved off the pipeline fitted to my training data to a file (a pickle file using the dill package). I then built a function to return a suggested price given details of a listing. From the perspective of a renter, or someone just putting up a listing, they should have all the feature info available except for `overall_satisfaction` and `ratings`. To make sure this was taken into account, my function randomly creates an overall satisfaction between 3 and 5, and a number of ratings between 1 and the max number of ratings in the dataset, which is 454. This is done 10 times, the random features are put in an array that contains the remaining given features, and the array is scaled and run through the model. The predictions are then averaged, and the average prediction is what is given to the user. 
 
 I created a simple prototype web app with flask and wtform that takes in all of the required inputs and returns a message with the suggested price (via my prediction function and model). All code and required files to locally host it are on my github. 
 
-![webapp](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/webapp_example.png)
+![webapp](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/weppapp_example.png)

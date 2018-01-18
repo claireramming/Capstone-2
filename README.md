@@ -1,5 +1,26 @@
 # Capstone-2
-Project Proposal
+
+This repository contains all code and documentation for the AirBnB Fairfinder project. 
+
+
+####See the app in action! 
+
+Make a directory with the following files from github (keep the directory structure):  
+* everything in pickled  
+* everything in templates  
+* fairfare.py
+
+System Requirements:  
+* Python 3  
+* Flask  
+* Dill  
+* WTForm
+
+Run `$ python fairfare.py` from the terminal and go to `http://127.0.0.1:5000/`  
+Fill out the fields, hit submit, and receive your price!  
+![webapp](https://raw.githubusercontent.com/claireramming/Capstone-2/master/imgs/weppapp_example.png)
+
+####Project Proposal
 
 There are a lot of AirBnB listings in NYC, it can be overwhelming for a person trying to book a room, or a new renter trying to rent a space, to figure out what a fair price is for a listing. With this project I would like to create a tool that uses machine learning to find fair price ranges for AirBnB listings in New York City. 
 

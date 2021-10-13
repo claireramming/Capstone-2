@@ -40,40 +40,11 @@ function Form({setPred}) {
     }
 
     return (
-        <form onSubmit={(e)=>{
+        <form className='info-form' onSubmit={(e)=>{
             e.preventDefault()
             predictPrice(entry)
         }}>
-            <label>
-                Type of Place:
-                <select 
-                    value={propType}
-                    onChange={(e)=>setPropType(e.target.value)}>
-                    {propTypes}
-                </select>
-            </label>
-            <label>
-                Number of Bedrooms: 
-                <input 
-                    type='number'
-                    value={numRooms}
-                    onChange={(e)=>setNumRooms(e.target.value)}
-                /></label>
-            <label>
-                Number of Guests: 
-                <input 
-                    type='number'
-                    value={numGuests}
-                    onChange={(e)=>setNumGuests(e.target.value)}
-                    /></label>
-            <label>
-                Type of Room: 
-                <select
-                    value={roomType}
-                    onChange={(e)=>setRoomType(e.target.value)}>
-                    {roomTypes}
-                </select>
-                </label>
+            <div className='container'>
             <label>
                 Borough:
                 <select
@@ -90,6 +61,43 @@ function Form({setPred}) {
                 {neighborhoodNames}
                 </select>
             </label>
+            </div>
+            <div className='container'>
+            <label>
+                Type of Place:
+                <select 
+                    value={propType}
+                    onChange={(e)=>setPropType(e.target.value)}>
+                    {propTypes}
+                </select>
+            </label>
+            <label>
+                Type of Room: 
+                <select
+                    value={roomType}
+                    onChange={(e)=>setRoomType(e.target.value)}>
+                    {roomTypes}
+                </select>
+            </label>
+            </div>
+            <div className='container'>
+            <label>
+                Number of Bedrooms: 
+                <input 
+                    type='number'
+                    value={numRooms}
+                    onChange={(e)=>setNumRooms(e.target.value)}
+                />
+            </label>
+            <label>
+                Number of Guests: 
+                <input 
+                    type='number'
+                    value={numGuests}
+                    onChange={(e)=>setNumGuests(e.target.value)}
+                    />
+            </label>
+            </div>
             <button>Find Fair Fare</button>
         </form>
     )

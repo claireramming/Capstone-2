@@ -1,1 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: lightblue;
+}
+
+select,
+input,
+button {
+    font-family: 'Poppins', sans-serif;
+    padding: .5em 1em;
+    text-align: center;
+}
+
+input {
+    width: 5em;
+    align-self: center;
+}
+
+button {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    letter-spacing: 1.3px; 
+    border: none;
+    border-radius: .5em;
+    background-color: lightblue;
+    transition: transform, 100ms
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1); 
+}
+
+button:active {
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.instructions,
+h1 {
+    margin: 0;
+    text-align: center;
+    padding: 1em 1.5em
+}
+
+.info-form {
+    margin: 0 1.5em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+}
+
+@media(min-width: 450px) {
+    .instructions {
+        text-align: left;
+    }
+
+    label {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    select, 
+    input {
+        margin-left: 1em;
+    }
+
+    .info-form {
+        align-items: flex-start;
+        text-align: left;
+        margin: 0 1.5em;
+    }
+
+    button {
+        align-self: center;
+    }
+}
+
+@media(min-width: 650px) {
+    .info-form {
+        align-items: center;
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+    }
+    label {
+        margin: 1em 1em;
+        text-align: center;
+    }
+}
 

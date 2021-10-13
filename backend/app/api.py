@@ -1,21 +1,35 @@
 from typing import Any
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import numpy as np
 import dill as pickle
 
 app = FastAPI()
 
+origins=[
+    "http://localhost:3000",
+    'localhost:3000'
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
 #import pickled files
-filename = 'pickled/model_v1.pk'
+filename = 'app/pickled/model_v1.pk'
 with open(filename ,'rb') as f:
     loaded_model = pickle.load(f)
 
-filename = 'pickled/sorted_arrays.pk'
+filename = 'app/pickled/sorted_arrays.pk'
 with open(filename ,'rb') as f:
     sorted_arrays = pickle.load(f)
     
-filename = 'pickled/feature_arrays.pk'
+filename = 'app/pickled/feature_arrays.pk'
 with open(filename ,'rb') as f:
     feature_arrays = pickle.load(f)
 
@@ -88,7 +102,7 @@ class PredictionRequest(BaseModel):
 
 @app.get('/')
 def read_root():
-    return {"Hello":"World"}
+    return {"message":"Welcome to Fair Fare Finder"}
 
 @app.post('/predict')
 def predict_fare(

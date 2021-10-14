@@ -2,9 +2,19 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
+    height: 100vh;
+    position: relative;
+}
+
+.main-container {
+    min-height: 100vh; 
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 header {
@@ -67,6 +77,28 @@ label {
     margin-top: 1.5em;
 }
 
+.result {
+    text-align: center;
+    margin: 1.5em auto 0;
+
+}
+
+.logo {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+footer {
+    margin: 0;
+    margin-top: 2em;
+    background: lightblue;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
 @media(min-width: 450px) {
     .instructions {
         text-align: left;
@@ -96,6 +128,10 @@ label {
 }
 
 @media(min-width: 650px) {
+    .instructions {
+        text-align: center;
+    }
+
     .info-form {
         align-items: center;
         text-align: center;

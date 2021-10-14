@@ -1,8 +1,8 @@
 import './App.css'
 import React, {useState} from 'react'
-import Header from './Header'
-import Form from './Form'
-import Logo from './Logo'
+import Header from './components/Header'
+import Form from './components/Form'
+import Logo from './components/Logo'
 
 function App() {
   const [prediction, setPrediction] = useState()

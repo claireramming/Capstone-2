@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {prop_types, room_types, boroughs, neighborhoods} from './lists.js'
+import {prop_types, room_types, boroughs, neighborhoods} from '../misc/lists.js'
 
 const listToOptions = (listArray) => listArray.map((thing, index) => <option key={index} value={`${thing}`}>{thing}</option>)
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from './cr_logo.png'
+import logo from '../misc/cr_logo.png'
 
 function Logo() {
     return (

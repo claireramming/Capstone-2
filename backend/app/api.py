@@ -21,15 +21,15 @@ app.add_middleware(
 )
 
 #import pickled files
-filename = './app/pickled/model_v1.pk'
+filename = './pickled/model_v1.pk'
 with open(filename ,'rb') as f:
     loaded_model = pickle.load(f)
 
-filename = 'app/pickled/sorted_arrays.pk'
+filename = './pickled/sorted_arrays.pk'
 with open(filename ,'rb') as f:
     sorted_arrays = pickle.load(f)
     
-filename = 'app/pickled/feature_arrays.pk'
+filename = './pickled/feature_arrays.pk'
 with open(filename ,'rb') as f:
     feature_arrays = pickle.load(f)
 

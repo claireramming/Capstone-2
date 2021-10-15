@@ -1,14 +1,11 @@
 from typing import Any
 from fastapi import FastAPI
-from fastapi.logger import logger
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import numpy as np
 import dill as pickle
-import os
 
 app = FastAPI()
-logger.info(os.getcwd())
 
 origins=[
     "http://localhost:3000",
@@ -24,15 +21,15 @@ app.add_middleware(
 )
 
 #import pickled files
-filename = '/pickled/model_v1.pk'
+filename = '/app/./backend/pickled/model_v1.pk'
 with open(filename ,'rb') as f:
     loaded_model = pickle.load(f)
 
-filename = '/pickled/sorted_arrays.pk'
+filename = '/app/./backend/pickled/sorted_arrays.pk'
 with open(filename ,'rb') as f:
     sorted_arrays = pickle.load(f)
     
-filename = '/pickled/feature_arrays.pk'
+filename = '/app/./backend/pickled/feature_arrays.pk'
 with open(filename ,'rb') as f:
     feature_arrays = pickle.load(f)
 

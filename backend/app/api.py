@@ -21,7 +21,7 @@ app.add_middleware(
 )
 
 #import pickled files
-filename = 'app/pickled/model_v1.pk'
+filename = './app/pickled/model_v1.pk'
 with open(filename ,'rb') as f:
     loaded_model = pickle.load(f)
 

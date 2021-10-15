@@ -26,7 +26,8 @@ function Form({setPred}) {
     }
 
     async function predictPrice(formData) {
-        const response = await fetch('http://localhost:8000/predict', { 
+        const url = 'https://evening-caverns-94382.herokuapp.com/predict'
+        const response = await fetch(url, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
